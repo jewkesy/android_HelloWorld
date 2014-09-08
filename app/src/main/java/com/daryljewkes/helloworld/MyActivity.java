@@ -7,26 +7,32 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MyActivity extends Activity {
+
+    private Button myButton;
+    private Integer clickCount = 0;
+    private TextView txtOutput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
 
-        final TextView firstTextView = (TextView) findViewById(R.id.textView);
-        Button clickButton = (Button) findViewById(R.id.clickButton);
+        txtOutput = (TextView) findViewById(R.id.dynamicText);
 
-        clickButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                firstTextView.setText("You clicked Me!");
-            }
-        });
+        //final TextView firstTextView = (TextView) findViewById(R.id.textView);
+//        Button myButton = (Button) findViewById(R.id.clickButton);
+//
+//        myButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                firstTextView.setText("You clicked Me!");
+//            }
+//        });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -45,5 +51,16 @@ public class MyActivity extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onMyButtonClick(View view) {
+        clickCount++;
+        String content = String.valueOf(clickCount);
+
+        String response = "This is the click count: " + content;
+
+        txtOutput.setText(response);
+
+        Toast.makeText(this, response, Toast.LENGTH_SHORT).show();
     }
 }
