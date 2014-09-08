@@ -1,17 +1,18 @@
 package com.daryljewkes.helloworld;
 
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+//import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MyActivity extends Activity {
 
-    private Button myButton;
+    //private Button myButton;
     private Integer clickCount = 0;
     private TextView txtOutput;
 
@@ -48,6 +49,13 @@ public class MyActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+            return true;
+        } else if (id == R.id.action_about) {
+            DialogFragment myFragment = new MyDialogFragment();
+            myFragment.show(getFragmentManager(), "theDialog");
+            return true;
+        } else if (id == R.id.action_exit) {
+            finish();
             return true;
         }
         return super.onOptionsItemSelected(item);
