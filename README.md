@@ -1,0 +1,3 @@
+Playing around with android development, following this guide...
+
+https://www.youtube.com/playlist?list=PLGLfVvz_LVvSPjWpLPFEfOCbezi6vATIh
