@@ -2,6 +2,7 @@ package com.daryljewkes.helloworld;
 
 import android.app.Activity;
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -62,13 +63,28 @@ public class MyActivity extends Activity {
     }
 
     public void onMyButtonClick(View view) {
-        clickCount++;
-        String content = String.valueOf(clickCount);
 
-        String response = "This is the click count: " + content;
+        Intent getNameScreenIntent = new Intent(this, SecondScreen.class);
 
-        txtOutput.setText(response);
+        final int result = 1;
+        getNameScreenIntent.putExtra("callingActivity", "MainActivity");
 
-        Toast.makeText(this, response, Toast.LENGTH_SHORT).show();
+
+        startActivityForResult(getNameScreenIntent, result); //expect data to come back
+        //startActivity(getNameScreenIntent); //send data one way
+
+
+        //older tutorial stuff
+
+//
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        TextView usersNameMessage = (TextView) findViewById(R.id.dynamicText);
+
+        String nameSentBack = data.getStringExtra("UsersName");
+        usersNameMessage.append(" " + nameSentBack);
     }
 }
