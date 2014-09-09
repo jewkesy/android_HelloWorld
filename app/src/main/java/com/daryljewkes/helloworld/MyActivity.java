@@ -14,8 +14,8 @@ import android.widget.Toast;
 public class MyActivity extends Activity {
 
     //private Button myButton;
-    private Integer clickCount = 0;
-    private TextView txtOutput;
+    //private Integer clickCount = 0;
+    //private TextView txtOutput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,13 +64,19 @@ public class MyActivity extends Activity {
 
     public void onMyButtonClick(View view) {
 
-        Intent getNameScreenIntent = new Intent(this, SecondScreen.class);
+//        Intent getNameScreenIntent = new Intent(this, SecondScreen.class);
 
         final int result = 1;
-        getNameScreenIntent.putExtra("callingActivity", "MainActivity");
+//        getNameScreenIntent.putExtra("callingActivity", "MainActivity");
 
 
-        startActivityForResult(getNameScreenIntent, result); //expect data to come back
+        Human bob = new Human(6.25, 185, "Bob");
+        Intent sendBob = new Intent(this, SecondScreen.class);
+
+        sendBob.putExtra("humanBob", bob);
+
+        startActivityForResult(sendBob, result);
+        //startActivityForResult(getNameScreenIntent, result); //expect data to come back
         //startActivity(getNameScreenIntent); //send data one way
 
 
