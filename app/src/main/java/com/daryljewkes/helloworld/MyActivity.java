@@ -22,7 +22,7 @@ public class MyActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
 
-        txtOutput = (TextView) findViewById(R.id.dynamicText);
+     //   txtOutput = (TextView) findViewById(R.id.dynamicText);
 
         //final TextView firstTextView = (TextView) findViewById(R.id.textView);
 //        Button myButton = (Button) findViewById(R.id.clickButton);
